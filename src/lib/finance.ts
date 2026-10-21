@@ -44,7 +44,7 @@ export interface FixedCost {
   startDate: string; // yyyy-mm-dd
   endDate: string | null;
   isActive: boolean;
-  notes?: string;
+  notes?: string | undefined;
 }
 
 const daysInMonth = (d: string) => {

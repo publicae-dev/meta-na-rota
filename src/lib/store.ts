@@ -25,9 +25,9 @@ export interface Ride {
   passengerMeters: number | null;
   completedAt: number;
   durationSec: number | null;
-  notes?: string;
+  notes?: string | undefined;
   source: "manual" | "print";
-  imageDataUrl?: string;
+  imageDataUrl?: string | undefined;
 }
 interface State {
   settings: Settings;
@@ -93,7 +93,7 @@ export const actions = {
   end() {
     set((s) => ({ ...s, sessions: s.sessions.map((x) => x.status !== "ended" ? { ...x, status: "ended", endedAt: now(), segments: x.segments.map((g) => g.end == null ? { ...g, end: now() } : g) } : x) }));
   },
-  saveRide(r: Omit<Ride, "id"> & { id?: string }) {
+  saveRide(r: Omit<Ride, "id"> & { id?: string | undefined }) {
     set((s) => r.id
       ? { ...s, rides: s.rides.map((x) => (x.id === r.id ? { ...x, ...r, id: x.id } : x)) }
       : { ...s, rides: [...s.rides, { ...r, id: crypto.randomUUID() }] });
