@@ -31,7 +31,7 @@ function Config() {
   const ok = t != null && t > 0 && k != null && k > 0 && k < 200 && f != null && f > 0 && f < 50;
 
   const save = () => {
-    if (!ok) return toast.error("Valores inválidos");
+    if (!ok) { toast.error("Valores inválidos"); return; }
     actions.updateSettings({ targetPerHourCents: Math.round(t! * 100), kmPerLiter: k!, fuelPriceCents: Math.round(f! * 100) });
     toast.success("Configurações salvas");
   };

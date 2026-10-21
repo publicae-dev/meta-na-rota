@@ -3,7 +3,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { actions, type Session } from "@/lib/store";
 
-export function SessionControls({ session }: { session?: Session }) {
+export function SessionControls({ session }: { session?: Session | undefined }) {
   if (!session)
     return (
       <Button size="lg" className="h-14 w-full rounded-2xl text-base" onClick={() => { actions.startSession(); toast.success("Jornada iniciada"); }}>

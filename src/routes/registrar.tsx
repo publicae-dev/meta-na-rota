@@ -56,7 +56,7 @@ function Registrar() {
   };
 
   const save = () => {
-    if (!valid) return toast.error("Verifique o valor e as distâncias.");
+    if (!valid) { toast.error("Verifique o valor e as distâncias."); return; }
     const open = st.sessions.find((s) => s.status !== "ended");
     actions.saveRide({
       id: editing?.id, sessionId: editing?.sessionId ?? open?.id ?? null, platform, grossCents: grossC,

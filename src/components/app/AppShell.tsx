@@ -59,7 +59,7 @@ export function AppShell({ title, children, action }: { title: string; children:
   );
 }
 
-export function Stat({ label, value, tone, hint }: { label: string; value: string; tone?: "pos" | "neg" | "warn"; hint?: string }) {
+export function Stat({ label, value, tone, hint }: { label: string; value: string; tone?: "pos" | "neg" | "warn" | undefined; hint?: string | undefined }) {
   return (
     <div className="rounded-2xl bg-card p-4">
       <p className="text-xs text-muted-foreground">{label}</p>

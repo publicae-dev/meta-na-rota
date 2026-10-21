@@ -86,8 +86,8 @@ function CostDialog({ cost, onClose, isNew }: { cost: FixedCost | null; onClose:
   const save = () => {
     const amountCents = Math.round((parseBR(amount) ?? 0) * 100);
     const r = schema.safeParse({ name: f.name, amountCents });
-    if (!r.success) return toast.error(r.error.issues[0].message);
-    if (f.endDate && f.endDate < f.startDate) return toast.error("Data final antes do início");
+    if (!r.success) { toast.error(r.error.issues[0]?.message ?? "Inválido"); return; }
+    if (f.endDate && f.endDate < f.startDate) { toast.error("Data final antes do início"); return; }
     actions.saveCost({ ...f, name: r.data.name, amountCents });
     toast.success("Custo salvo"); onClose();
   };

@@ -48,7 +48,7 @@ export interface FixedCost {
 }
 
 const daysInMonth = (d: string) => {
-  const [y, m] = d.split("-").map(Number);
+  const [y = 1970, m = 1] = d.split("-").map(Number);
   return new Date(y, m, 0).getDate();
 };
 
